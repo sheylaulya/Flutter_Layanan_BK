@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.0"
+  crea_radio_button:
+    dependency: "direct main"
+    description:
+      name: crea_radio_button
+      sha256: ff6c597247630f0a0a899141e8dd07d5904fef44949e3a0fd5cf6538c32c2116
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.0"
   crypto:
     dependency: transitive
     description:
@@ -57,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  cupertino_radio_choice:
+    dependency: "direct main"
+    description:
+      name: cupertino_radio_choice
+      sha256: "2ded617f6b1b38b90d5b006207d8278bc0ec56ce9ce2064a6483b9dee8cc5675"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -243,6 +259,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  searchbar_animation:
+    dependency: "direct main"
+    description:
+      name: searchbar_animation
+      sha256: "8c9b82e666dae343f8ec34137da18f0de3f019da42691ec8b2c492ee434cc0ba"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   sky_engine:
     dependency: transitive
     description: flutter
