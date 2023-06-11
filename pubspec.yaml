@@ -68,6 +68,8 @@ flutter:
     - assets/img/OBWelcome.jpg
     - assets/img/OBConseling.jpg
     - assets/img/OBSocial.jpg
+    - assets/img/profile.png
+    - assets/img/editprofile.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
