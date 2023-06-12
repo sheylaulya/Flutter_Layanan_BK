@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_layanan_bk/components/bottomnavbar.dart';
 import 'package:mobile_layanan_bk/home.dart';
 import 'package:mobile_layanan_bk/method/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
         content: Text(Response['message']),
       ));
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomePage()));
+          MaterialPageRoute(builder: (context) => const BottomNavigation()));
     }
   }
 
