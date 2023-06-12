@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_layanan_bk/login.dart';
 import 'package:mobile_layanan_bk/onboardConseling.dart';
@@ -23,11 +21,11 @@ class _OnBoardWelcomeState extends State<OnBoardWelcome> {
             Transform(
               transform: Matrix4.translationValues(0.0, -140.0, 0.0),
               child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
+                translation: const Offset(-0.5, 0.0),
                 child: Container(
                   width: 250.0,
                   height: 250.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Color(0xffB3D5FF), shape: BoxShape.circle),
                 ),
               ),
@@ -35,11 +33,11 @@ class _OnBoardWelcomeState extends State<OnBoardWelcome> {
             Transform(
               transform: Matrix4.translationValues(500.0, 200.0, 0.0),
               child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
+                translation: const Offset(-0.5, 0.0),
                 child: Container(
                   width: 250.0,
                   height: 250.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Color(0xffB3D5FF), shape: BoxShape.circle),
                 ),
               ),
@@ -47,11 +45,11 @@ class _OnBoardWelcomeState extends State<OnBoardWelcome> {
             Transform(
               transform: Matrix4.translationValues(0.0, 630.0, 0.0),
               child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
+                translation: const Offset(-0.5, 0.0),
                 child: Container(
                   width: 250.0,
                   height: 250.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Color(0xffB3D5FF), shape: BoxShape.circle),
                 ),
               ),
@@ -60,52 +58,68 @@ class _OnBoardWelcomeState extends State<OnBoardWelcome> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image(
+                  const Image(
                     image: AssetImage('assets/img/OBWelcome.jpg'),
                     width: 250,
                   ),
                   Text(
                     'Welcome to Starbhak Konseling',
                     style: GoogleFonts.quicksand(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w700)),
                   ),
-               
                   Text(
-                    'We hope you are statisfied', textAlign: TextAlign.center,
+                    'We hope you are statisfied',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.quicksand(
-                        textStyle: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w700, color: Colors.black54), ),
+                      textStyle: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black54),
+                    ),
                   ),
-                   SizedBox(height: 60,),
-                   ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=> OnBoardConseling()));
-                        },
-                        child: Text('Next',  style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w600))),
-                        style: ButtonStyle(
-                            minimumSize:
-                                MaterialStateProperty.all(Size(300, 50)), backgroundColor: MaterialStatePropertyAll(Color(0xffB3D5FF))
-                                ),
-                      ),
-                      SizedBox(height: 10,),
-                      ElevatedButton(
-                        onPressed: () {
-                              Navigator.push(
+                  const SizedBox(
+                    height: 60,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LoginPage()));
-                        },
-                        child: Text('Skip',  style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xffB3D5FF)))),
-                        style: ButtonStyle(
-                            minimumSize:
-                                MaterialStateProperty.all(Size(300, 50)), backgroundColor: MaterialStatePropertyAll(Colors.white)
-                                ),
-                      )
+                              builder: (context) => const OnBoardConseling()));
+                    },
+                    style: ButtonStyle(
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(300, 50)),
+                        backgroundColor:
+                            const MaterialStatePropertyAll(Color(0xffB3D5FF))),
+                    child: Text('Next',
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w600))),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
+                    },
+                    style: ButtonStyle(
+                        minimumSize:
+                            MaterialStateProperty.all(const Size(300, 50)),
+                        backgroundColor:
+                            const MaterialStatePropertyAll(Colors.white)),
+                    child: Text('Skip',
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xffB3D5FF)))),
+                  )
                 ],
               ),
             )

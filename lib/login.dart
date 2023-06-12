@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_layanan_bk/home.dart';
+import 'package:mobile_layanan_bk/method/api.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,12 +13,37 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController name = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  void loginUser() async {
+    final data = {
+      'name': name.text.toString(),
+      'password': password.text.toString(),
+    };
+
+    final result = await API().postRequest(route: '/login', data: data);
+    final Response = jsonDecode(result.body);
+    if (Response['status'] == 200) {
+      SharedPreferences preferences = await SharedPreferences.getInstance();
+      await preferences.setInt('user_id', Response['user']['id']);
+      await preferences.setString('name', Response['user']['name']);
+      await preferences.setString('email', Response['user']['email']);
+      await preferences.setString('token', Response['token']);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(Response['message']),
+      ));
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const HomePage()));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/img/login.png"),
               fit: BoxFit.cover,
@@ -26,27 +53,30 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image(
+                const Image(
                   image: AssetImage('assets/img/login-illust.png'),
                   width: 250,
                 ),
-                SizedBox(height: 15,),
-                Container(
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
                   width: 300,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Email',
                           style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500))),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       TextFormField(
+                        controller: name,
                         decoration: const InputDecoration(
                             // prefixIcon: Icon(Icons.email),
-                            labelText: 'Enter Your Email',
+                            labelText: 'Enter Your Name',
                             contentPadding:
                                 EdgeInsets.only(left: 20, top: 5, bottom: 5),
                             border: OutlineInputBorder(
@@ -56,22 +86,23 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Container(
+                SizedBox(
                   width: 300,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Password',
                           style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w500))),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       TextFormField(
+                        controller: password,
                         decoration: const InputDecoration(
                           // prefixIcon: Icon(Icons.email),
                           labelText: 'Enter Your Password',
@@ -82,16 +113,25 @@ class _LoginPageState extends State<LoginPage> {
                                   BorderRadius.all(Radius.circular(10))),
                         ),
                       ),
-                      SizedBox(height: 20,),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Login',  style: GoogleFonts.poppins(
-                              textStyle: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w600))),
-                        style: ButtonStyle(
-                            minimumSize:
-                                MaterialStateProperty.all(Size(500, 50)), backgroundColor: MaterialStatePropertyAll(Color(0xffB3D5FF))
-                                ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InkWell(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            loginUser();
+                          },
+                          style: ButtonStyle(
+                              minimumSize: MaterialStateProperty.all(
+                                  const Size(500, 50)),
+                              backgroundColor: const MaterialStatePropertyAll(
+                                  Color(0xffB3D5FF))),
+                          child: Text('Login',
+                              style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600))),
+                        ),
                       )
                     ],
                   ),
