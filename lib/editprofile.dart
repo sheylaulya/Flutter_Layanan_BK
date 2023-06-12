@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -13,95 +14,213 @@ class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.only(top: 10, bottom: 50),
-                height: 320,
-                decoration: BoxDecoration(
-                  color: Color(0xffB3D5FF),
-                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(60), bottomRight: Radius.circular(60))
-                ),
-                child: Image(image: AssetImage('assets/img/editprofile.png')),
-              ),
-              Transform(
-              transform: Matrix4.translationValues(00.0, -30.0, 0.0),
-              child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
-                child: Container(
-                  width: 150.0,
-                  height: 150.0,
-                  decoration: BoxDecoration(
-                      color: Color(0xffE7F0FB), shape: BoxShape.circle),
-                ),
-              ),
+      backgroundColor: Color(0xffB3D5FF),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Image(
+              image: AssetImage('assets/img/profile.png'),
+              width: 250,
             ),
-            Transform(
-              transform: Matrix4.translationValues(360.0, 20.0, 0.0),
-              child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
-                child: Container(
-                  width: 70.0,
-                  height: 65.0,
-                  decoration: BoxDecoration(
-                      color: Color(0xffE7F0FB), borderRadius: BorderRadius.circular(200)),
-                ),
-              ),
-            ),
-            Transform(
-              transform: Matrix4.translationValues(50.0, 200.0, 0.0),
-              child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
-                child: Container(
-                  width: 40.0,
-                  height: 40.0,
-                  decoration: BoxDecoration(
-                      color: Color(0xffE7F0FB), shape: BoxShape.circle),
-                ),
-              ),
-            ),
-            Transform(
-              transform: Matrix4.translationValues(360.0, 240.0, 0.0),
-              child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
-                child: Container(
-                  width: 150.0,
-                  height: 150.0,
-                  decoration: BoxDecoration(
-                      color: Color(0xffE7F0FB), shape: BoxShape.circle),
-                ),
-              ),
-            ),
-            Transform(
-              transform: Matrix4.translationValues(200.0, 260.0, 0.0),
-              child: FractionalTranslation(
-                translation: Offset(-0.5, 0.0),
-                child: Container(
-              width: 300,
-              height: 350,
+
+
+            Container(
+              padding: EdgeInsets.only(left: 30, top: 20, right: 30),
+              width: double.infinity,
+              height: 650,
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(25),
-                ),
-                boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                      offset: Offset(0, 3), // Mengatur posisi bayangan
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(45),
+                      topRight: Radius.circular(45))),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Text('Profile Account',
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xffB3D5FF)))),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.info_outline,
+                        color: Color(0xffB3D5FF),
+                        size: 30,
+                      )
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    width: 350,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Username',
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black54))),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              // prefixIcon: Icon(Icons.Username),
+                              labelText: 'Enter Your Username',
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                        ),
+                      ],
                     ),
-                  ],
-              ),
-            )
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    width: 350,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Password',
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black54))),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              // prefixIcon: Icon(Icons.password),
+                              labelText: 'Enter Your password',
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    children: [
+                      Text('Personal Info',
+                          style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xffB3D5FF)))),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.info_outline,
+                        color: Color(0xffB3D5FF),
+                        size: 30,
+                      )
+                    ],
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    width: 350,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Email',
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black54))),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              // prefixIcon: Icon(Icons.Email),
+                              labelText: 'Enter Your Email',
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    width: 350,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Gender',
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black54))),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              // prefixIcon: Icon(Icons.Gender),
+                              labelText: 'Enter Your Gender',
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    width: 350,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('Phone Number',
+                            style: GoogleFonts.poppins(
+                                textStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black54))),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                              // prefixIcon: Icon(Icons.Phone Number),
+                              labelText: 'Enter Your Phone Number',
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)))),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 20,),
+                   ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Save Changes',  style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w600))),
+                        style: ButtonStyle(
+                            minimumSize:
+                                MaterialStateProperty.all(Size(200, 50)), backgroundColor: MaterialStatePropertyAll(Color(0xffB3D5FF))
+                                ),
+                      )
+                ],
               ),
             ),
+
             
-            ],
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
