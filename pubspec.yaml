@@ -40,6 +40,7 @@ dependencies:
   searchbar_animation: ^0.0.4
   crea_radio_button: ^0.6.0
   image_picker: ^0.8.8
+  google_nav_bar: ^5.0.6
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     - assets/img/OBSocial.jpg
     - assets/img/profile.png
     - assets/img/editprofile.png
+    - assets/img/home.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
