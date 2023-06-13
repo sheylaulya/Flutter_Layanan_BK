@@ -41,16 +41,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Dashboard"),
+        title: const Text("HomePage"),
         actions: const [],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: const [],
-          ),
-        ),
+        child: isLoading
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Container(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    Text(preferences.getInt('user_id').toString()),
+                    Text(
+                      preferences.getString('name').toString(),
+                    ),
+                    Text(
+                      preferences.getString('email').toString(),
+                    ),
+                    Text(
+                      preferences.getString('token').toString(),
+                    ),
+                  ],
+                ),
+              ),
       ),
     );
   }
