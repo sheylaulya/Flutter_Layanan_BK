@@ -49,7 +49,7 @@ class _SchedulePageState extends State<SchedulePage> {
             Container(
               padding: EdgeInsets.only(top: 30),
               width: double.infinity,
-              height: 650,
+              height: 700,
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -59,7 +59,7 @@ class _SchedulePageState extends State<SchedulePage> {
                 children: [
                   Container(
                     padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-                    width: 370,
+                    width: 320,
                     height: 110,
                     decoration: BoxDecoration(
                         color: Color(0xff537188),
@@ -138,7 +138,7 @@ class _SchedulePageState extends State<SchedulePage> {
                   SizedBox(height: 20,),
                          Container(
                     padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-                    width: 370,
+                    width: 320,
                     height: 110,
                     decoration: BoxDecoration(
                         color: Color(0xff394867),
@@ -217,7 +217,7 @@ class _SchedulePageState extends State<SchedulePage> {
                    SizedBox(height: 20,),
                          Container(
                     padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-                    width: 370,
+                    width: 320,
                     height: 110,
                     decoration: BoxDecoration(
                         color: Color(0xff212A3E),
@@ -297,7 +297,7 @@ class _SchedulePageState extends State<SchedulePage> {
                    SizedBox(height: 20,),
                          Container(
                     padding: EdgeInsets.only(top: 10, left: 15, right: 15),
-                    width: 370,
+                    width: 320,
                     height: 110,
                     decoration: BoxDecoration(
                         color: Colors.white,

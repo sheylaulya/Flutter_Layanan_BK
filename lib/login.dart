@@ -46,42 +46,42 @@ class _LoginPageState extends State<LoginPage> {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-             Transform(
-                transform: Matrix4.translationValues(380.0, -180.0, 0.0),
-                child: FractionalTranslation(
-                  translation: Offset(-0.5, 0.0),
-                  child: Container(
-                    width: 250.0,
-                    height: 250.0,
-                    decoration: BoxDecoration(
-                        color: Color(0xffB3D5FF), shape: BoxShape.circle),
-                  ),
+            Transform(
+              transform: Matrix4.translationValues(380.0, -180.0, 0.0),
+              child: FractionalTranslation(
+                translation: Offset(-0.5, 0.0),
+                child: Container(
+                  width: 250.0,
+                  height: 250.0,
+                  decoration: BoxDecoration(
+                      color: Color(0xffB3D5FF), shape: BoxShape.circle),
                 ),
               ),
-              Transform(
-                transform: Matrix4.translationValues(-80.0, 100.0, 0.0),
-                child: FractionalTranslation(
-                  translation: Offset(-0.5, 0.0),
-                  child: Container(
-                    width: 250.0,
-                    height: 250.0,
-                    decoration: BoxDecoration(
-                        color: Color(0xffB3D5FF), shape: BoxShape.circle),
-                  ),
+            ),
+            Transform(
+              transform: Matrix4.translationValues(-80.0, 100.0, 0.0),
+              child: FractionalTranslation(
+                translation: Offset(-0.5, 0.0),
+                child: Container(
+                  width: 250.0,
+                  height: 250.0,
+                  decoration: BoxDecoration(
+                      color: Color(0xffB3D5FF), shape: BoxShape.circle),
                 ),
               ),
-              Transform(
-                transform: Matrix4.translationValues(380.0, 650.0, 0.0),
-                child: FractionalTranslation(
-                  translation: Offset(-0.5, 0.0),
-                  child: Container(
-                    width: 250.0,
-                    height: 250.0,
-                    decoration: BoxDecoration(
-                        color: Color(0xffB3D5FF), shape: BoxShape.circle),
-                  ),
+            ),
+            Transform(
+              transform: Matrix4.translationValues(380.0, 650.0, 0.0),
+              child: FractionalTranslation(
+                translation: Offset(-0.5, 0.0),
+                child: Container(
+                  width: 250.0,
+                  height: 250.0,
+                  decoration: BoxDecoration(
+                      color: Color(0xffB3D5FF), shape: BoxShape.circle),
                 ),
               ),
+            ),
             Container(
               margin: EdgeInsets.only(top: 100),
               // decoration: const BoxDecoration(
@@ -90,7 +90,6 @@ class _LoginPageState extends State<LoginPage> {
               //     fit: BoxFit.cover,
               //   ),
               child: Center(
-              
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -106,10 +105,11 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Email',
+                          Text('Name',
                               style: GoogleFonts.poppins(
                                   textStyle: const TextStyle(
-                                      fontSize: 16, fontWeight: FontWeight.w500))),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500))),
                           const SizedBox(
                             height: 5,
                           ),
@@ -118,8 +118,8 @@ class _LoginPageState extends State<LoginPage> {
                             decoration: const InputDecoration(
                                 // prefixIcon: Icon(Icons.email),
                                 labelText: 'Enter Your Name',
-                                contentPadding:
-                                    EdgeInsets.only(left: 20, top: 5, bottom: 5),
+                                contentPadding: EdgeInsets.only(
+                                    left: 20, top: 5, bottom: 5),
                                 border: OutlineInputBorder(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(10)))),
@@ -138,7 +138,8 @@ class _LoginPageState extends State<LoginPage> {
                           Text('Password',
                               style: GoogleFonts.poppins(
                                   textStyle: const TextStyle(
-                                      fontSize: 16, fontWeight: FontWeight.w500))),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500))),
                           const SizedBox(
                             height: 5,
                           ),
@@ -163,15 +164,20 @@ class _LoginPageState extends State<LoginPage> {
                                 loginUser();
                               },
                               style: ButtonStyle(
-                                  minimumSize: MaterialStateProperty.all(
-                                      const Size(500, 50)),
-                                  backgroundColor: const MaterialStatePropertyAll(
-                                      Color(0xffB3D5FF))),
-                              child: Text('Login',
-                                  style: GoogleFonts.poppins(
-                                      textStyle: const TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600))),
+                                minimumSize: MaterialStateProperty.all(
+                                    const Size(500, 50)),
+                                backgroundColor: const MaterialStatePropertyAll(
+                                  Color(0xffB3D5FF),
+                                ),
+                              ),
+                              child: Text(
+                                'Login',
+                                style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
                             ),
                           )
                         ],

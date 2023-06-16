@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile_layanan_bk/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -41,12 +42,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffB3D5FF),
+      backgroundColor: const Color(0xffB3D5FF),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -55,45 +56,47 @@ class _HomePageState extends State<HomePage> {
                 Text(
                   'Hi ! Welcome',
                   style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
                           color: Colors.white)),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
-                Text(
-                  'Divadan Arya',
-                  style: GoogleFonts.poppins(
-                      textStyle: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff0A2647))),
-                )
+                isLoading
+                    ? const CircularProgressIndicator()
+                    : Text(
+                        preferences.getString('name').toString(),
+                        style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xff0A2647))),
+                      )
               ],
             ),
             Text('What can i do for you today?',
                 style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
                         color: Colors.white))),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Image(
+            const Image(
               image: AssetImage('assets/img/home.png'),
               width: 220,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
-              padding: EdgeInsets.only(top: 20, left: 35, right: 35),
+              padding: const EdgeInsets.only(top: 20, left: 35, right: 35),
               width: double.infinity,
-              height: 400,
-              decoration: BoxDecoration(
+              height: 500,
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(50),
@@ -103,19 +106,20 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Text('Motivation Quotes For You',
                       style: GoogleFonts.poppins(
-                          textStyle: TextStyle(
+                          textStyle: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
                               color: Color(0xff85B5ED)))),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
-                    padding: EdgeInsets.only(top: 15, left: 30, right: 30),
+                    padding:
+                        const EdgeInsets.only(top: 15, left: 30, right: 30),
                     width: 400,
-                    height: 120,
+                    height: 150,
                     decoration: BoxDecoration(
-                        color: Color(0xff85B5ED).withOpacity(0.5),
+                        color: const Color(0xff85B5ED).withOpacity(0.5),
                         borderRadius: BorderRadius.circular(20)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,11 +130,11 @@ class _HomePageState extends State<HomePage> {
                                     fontSize: 16,
                                     fontWeight: FontWeight.w700,
                                     color: Colors.black.withOpacity(0.8)))),
-                        SizedBox(
+                        const SizedBox(
                           height: 5,
                         ),
                         Text(
-                            '“Lorem ipsum dolor sit amet consectetur. Diam morbi risus ut odio dictum id accumsan aliquam   ',
+                            'More smiling, less worrying. More compassion, less judgment. More blessed, less stressed. More love, less hated - Roy T. Bennett, The Light in the Heart',
                             style: GoogleFonts.poppins(
                                 textStyle: TextStyle(
                                     fontSize: 13,
