@@ -28,7 +28,7 @@ class _HistorypageState extends State<Historypage> {
     List<History> histories = [];
     SharedPreferences sp = await SharedPreferences.getInstance();
 
-    String urlLocal = "http://computer-armor.at.ply.gg:39438/api/history";
+    String urlLocal = "http://147.185.221.16:7471/api/history";
 
     var result = await http.get(Uri.parse(urlLocal));
 
@@ -294,7 +294,8 @@ class _HistorypageState extends State<Historypage> {
                             
                           ],
                         );
-                      }),
+                      }
+                      ),
                     
                 ),
        

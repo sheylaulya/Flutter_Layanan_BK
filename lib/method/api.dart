@@ -6,7 +6,7 @@ class API {
     required String route,
     required Map<String, String> data,
   }) async {
-    const String apiUrl = 'http://testing-manner.at.ply.gg:44886/api/auth';
+    const String apiUrl = 'http://147.185.221.16:7471/api/auth';
 
     String url = apiUrl + route;
 
