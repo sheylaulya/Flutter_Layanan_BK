@@ -88,7 +88,9 @@ class _HomePageState extends State<HomePage> {
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white)),
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         isLoading
                             ? const CircularProgressIndicator()
                             : Text(
@@ -101,19 +103,18 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                        
                       ],
                     ),
                     Text(
-                          'What can i do for you today?',
-                          style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
+                      'What can i do for you today?',
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
                         ),
+                      ),
+                    ),
                     const SizedBox(
                       height: 10,
                     ),
@@ -136,7 +137,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       child: Container(
-                        margin: const EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20, bottom: 0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -157,17 +158,38 @@ class _HomePageState extends State<HomePage> {
                                 itemBuilder: (context, index) {
                                   var itemData = data![index];
                                   return Container(
-                                    margin: EdgeInsets.only(bottom: 10),
-                                    padding: EdgeInsets.all(10),
+                                    padding: EdgeInsets.only(top: 15, left: 20, right: 20, bottom: 15),
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xff85B5ED).withOpacity(0.5)
-                                    ),
-                                    child: ListTile(
-                                      title: Text(
-                                          "${itemData["guru_bk_id"]}"),
-                                          
-                                      subtitle: Text(itemData["quotes"]),
+                                        borderRadius: BorderRadius.circular(10),
+                                        color:
+                                            Color(0xff85B5ED).withOpacity(0.5)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "${itemData["guru_bk_id"]}",
+                                          style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Text(itemData["quotes"],  style: GoogleFonts.poppins(
+                                            textStyle: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                            ),
+                                          ),),
+                                      ],
+
                                       // Tambahkan ikon, aksi, atau elemen lain sesuai kebutuhan
                                     ),
                                   );

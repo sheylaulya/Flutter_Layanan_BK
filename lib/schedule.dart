@@ -74,138 +74,178 @@ class _SchedulePageState extends State<SchedulePage> {
               future: getSchedule(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  return Stack(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Schedule',
-                              style: GoogleFonts.poppins(
-                                  textStyle: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white)),
-                            ),
-                            SizedBox(
-                              width: 7,
-                            ),
-                            Icon(
-                              Icons.calendar_month_outlined,
-                              color: Colors.white,
-                              size: 30,
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        padding: EdgeInsets.only( left: 20, right: 20),
-                        width: double.infinity,
-                        height: 700,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(30),
-                                topRight: Radius.circular(30))),
-                        child: ListView.builder(
-                               shrinkWrap: true,
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        Schedule schedule = snapshot.data![index];
-                          return Container(
-                            padding:
-                                EdgeInsets.only(top: 10, left: 15, right: 15),
-                                      margin: EdgeInsets.only(bottom: 15),
-                            width: 30,
-                            height: 110,
-                            decoration: BoxDecoration(
-                                color: Color(0xff537188),
-                                borderRadius: BorderRadius.circular(15)),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      schedule.jam_mulai+ '-' +schedule.jam_berakhir,
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white
-                                                  .withOpacity(0.8))),
-                                    ),
-                                    Text(
-                                      schedule.guru_bk,
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              color: Colors.white
-                                                  .withOpacity(0.8))),
-                                    ),
-                                  ],
+                                Text(
+                                  'Schedule',
+                                  style: GoogleFonts.poppins(
+                                      textStyle: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white)),
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 10, top: 2),
-                                  child: Text(schedule.jenis_layanan,
-                                      style: GoogleFonts.poppins(
-                                          textStyle: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white))),
+                                SizedBox(
+                                  width: 7,
                                 ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        '2 Hours',
-                                        style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white
-                                                    .withOpacity(0.8))),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.only(top: 4),
-                                        width: 120,
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(10))),
-                                        child: Text(
-                                          schedule.status,
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.black)),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                
-                                ),
-                               
+                                Icon(
+                                  Icons.calendar_month_outlined,
+                                  color: Colors.white,
+                                  size: 30,
+                                )
                               ],
                             ),
-                          );
-                }),
-                      )
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 20, right: 20),
+                            width: double.infinity,
+                            height: 700,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30),
+                                    topRight: Radius.circular(30))),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (context, index) {
+                                  Schedule schedule = snapshot.data![index];
+                                  return SingleChildScrollView(
+                                    child: Container(
+                                      padding: EdgeInsets.only(
+                                          top: 10, left: 15, right: 15),
+                                      margin: EdgeInsets.only(bottom: 15),
+                                      width: 30,
+                                      height: 110,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xff537188),
+                                          borderRadius:
+                                              BorderRadius.circular(15)),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                schedule.jam_mulai +
+                                                    '-' +
+                                                    schedule.jam_berakhir,
+                                                style: GoogleFonts.poppins(
+                                                    textStyle: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.white
+                                                            .withOpacity(0.8))),
+                                              ),
+                                              Text(
+                                                schedule.guru_bk,
+                                                style: GoogleFonts.poppins(
+                                                    textStyle: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.white
+                                                            .withOpacity(0.8))),
+                                              ),
+                                            ],
+                                          ),
+                                          Container(
+                                            margin:
+                                                EdgeInsets.only(left: 10, top: 2),
+                                            child: Text(schedule.jenis_layanan,
+                                                style: GoogleFonts.poppins(
+                                                    textStyle: TextStyle(
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color: Colors.white))),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(left: 10),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  '2 Hours',
+                                                  style: GoogleFonts.poppins(
+                                                      textStyle: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color: Colors.white
+                                                              .withOpacity(0.8))),
+                                                ),
+                                                Container(
+                                                  padding:
+                                                      EdgeInsets.only(top: 4),
+                                                  width: 120,
+                                                  height: 30,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10))),
+                                                  child: Text(
+                                                    schedule.status,
+                                                    textAlign: TextAlign.center,
+                                                    style: GoogleFonts.poppins(
+                                                        textStyle: TextStyle(
+                                                            fontSize: 14,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: Colors.black)),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                }),
+                          )
+                        ],
+                      ),
+                         Transform(
+              transform: Matrix4.translationValues(310.0, 660.0, 0.0),
+              child: FractionalTranslation(
+                translation: Offset(-0.5, 0.0),
+                child: ElevatedButton(
+                        onPressed: () {
+                         
+                          print('Tombol + ditekan');
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(
+                              14.0), 
+                              backgroundColor: Color(0xffB3D5FF),
+                        ),
+                        child: Text(
+                          '+',
+                          style: TextStyle(fontSize: 24),
+                        ),
+                      ),
+              ),
+            ),
+                     
                     ],
                   );
                 } else {
