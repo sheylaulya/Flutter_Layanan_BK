@@ -29,7 +29,7 @@ class _SchedulePageState extends State<SchedulePage> {
     List<Schedule> schedules = [];
     SharedPreferences sp = await SharedPreferences.getInstance();
 
-    String urlLocal = "http://computer-armor.at.ply.gg:39438/api/schedule";
+    String urlLocal = "http://147.185.221.16:7471/api/schedule";
 
     var result = await http.get(Uri.parse(urlLocal));
 
@@ -105,7 +105,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         height: 15,
                       ),
                       Container(
-                        padding: EdgeInsets.only(top: 30),
+                        padding: EdgeInsets.only( left: 20, right: 20),
                         width: double.infinity,
                         height: 700,
                         decoration: BoxDecoration(
@@ -118,94 +118,92 @@ class _SchedulePageState extends State<SchedulePage> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         Schedule schedule = snapshot.data![index];
-                          children: [
-                            Container(
-                              padding:
-                                  EdgeInsets.only(top: 10, left: 15, right: 15),
-                              width: 320,
-                              height: 110,
-                              decoration: BoxDecoration(
-                                  color: Color(0xff537188),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+                          return Container(
+                            padding:
+                                EdgeInsets.only(top: 10, left: 15, right: 15),
+                                      margin: EdgeInsets.only(bottom: 15),
+                            width: 30,
+                            height: 110,
+                            decoration: BoxDecoration(
+                                color: Color(0xff537188),
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      schedule.jam_mulai+ '-' +schedule.jam_berakhir,
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white
+                                                  .withOpacity(0.8))),
+                                    ),
+                                    Text(
+                                      schedule.guru_bk,
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.white
+                                                  .withOpacity(0.8))),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 10, top: 2),
+                                  child: Text(schedule.jenis_layanan,
+                                      style: GoogleFonts.poppins(
+                                          textStyle: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white))),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
-                                        schedule.jam_mulai+ '-' +schedule.jam_berakhir,
+                                        '2 Hours',
                                         style: GoogleFonts.poppins(
                                             textStyle: TextStyle(
-                                                fontSize: 16,
+                                                fontSize: 14,
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.white
                                                     .withOpacity(0.8))),
                                       ),
-                                      Text(
-                                        schedule.guru_bk,
-                                        style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                                color: Colors.white
-                                                    .withOpacity(0.8))),
+                                      Container(
+                                        padding: EdgeInsets.only(top: 4),
+                                        width: 120,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        child: Text(
+                                          schedule.status,
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.poppins(
+                                              textStyle: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.black)),
+                                        ),
                                       ),
                                     ],
                                   ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 10),
-                                    child: Text(schedule.jenis_layanan,
-                                        style: GoogleFonts.poppins(
-                                            textStyle: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.white))),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.only(left: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          '2 Hours',
-                                          style: GoogleFonts.poppins(
-                                              textStyle: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w500,
-                                                  color: Colors.white
-                                                      .withOpacity(0.8))),
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.only(top: 2),
-                                          width: 120,
-                                          height: 30,
-                                          decoration: BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10))),
-                                          child: Text(
-                                            schedule.status,
-                                            textAlign: TextAlign.center,
-                                            style: GoogleFonts.poppins(
-                                                textStyle: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.black)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
+                                
+                                ),
+                               
+                              ],
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                          ];
+                          );
                 }),
                       )
                     ],

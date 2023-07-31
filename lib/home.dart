@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:mobile_layanan_bk/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -39,116 +40,224 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 
+  Future<List<dynamic>> _fetchData() async {
+    final response =
+        await http.get(Uri.parse("http://147.185.221.16:7471/api/quotes"));
+    if (response.statusCode == 200) {
+      // Mengonversi respons JSON menjadi List of Maps
+      return json.decode(response.body);
+    } else {
+      throw Exception("Gagal mengambil data dari API");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xffB3D5FF),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const SizedBox(
-              height: 40,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Hi ! Welcome',
-                  style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white)),
-                ),
-                const SizedBox(
-                  width: 5,
-                ),
-                isLoading
-                    ? const CircularProgressIndicator()
-                    : Text(
-                        preferences.getString('name').toString(),
-                        style: GoogleFonts.poppins(
-                            textStyle: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff0A2647))),
-                      )
-              ],
-            ),
-            Text('What can i do for you today?',
-                style: GoogleFonts.poppins(
-                    textStyle: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white))),
-            const SizedBox(
-              height: 10,
-            ),
-            const Image(
-              image: AssetImage('assets/img/home.png'),
-              width: 220,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 20, left: 35, right: 35),
-              width: double.infinity,
-              height: 500,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50))),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Motivation Quotes For You',
-                      style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff85B5ED)))),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    padding:
-                        const EdgeInsets.only(top: 15, left: 30, right: 30),
-                    width: 400,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        color: const Color(0xff85B5ED).withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+    return FutureBuilder<List<dynamic>>(
+      future: _fetchData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Text("Error: ${snapshot.error}"),
+          );
+        } else {
+          // Jika data berhasil diambil, tampilkan ListView untuk menampilkan data
+          List<dynamic>? data = snapshot.data;
+          // ... (other code remains the same) ...
+
+          return Scaffold(
+            backgroundColor: const Color(0xffB3D5FF),
+            body: SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(top: 40),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Mr. Ricky Sudrajat',
-                            style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.black.withOpacity(0.8)))),
-                        const SizedBox(
-                          height: 5,
-                        ),
                         Text(
-                            'More smiling, less worrying. More compassion, less judgment. More blessed, less stressed. More love, less hated - Roy T. Bennett, The Light in the Heart',
-                            style: GoogleFonts.poppins(
-                                textStyle: TextStyle(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black.withOpacity(0.8)))),
+                          'Hi ! Welcome',
+                          style: GoogleFonts.poppins(
+                              textStyle: const TextStyle(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white)),
+                        ),
+                        SizedBox(width: 10,),
+                        isLoading
+                            ? const CircularProgressIndicator()
+                            : Text(
+                                preferences.getString('name').toString(),
+                                style: GoogleFonts.poppins(
+                                  textStyle: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff0A2647),
+                                  ),
+                                ),
+                              ),
+                        
                       ],
                     ),
-                  )
-                ],
+                    Text(
+                          'What can i do for you today?',
+                          style: GoogleFonts.poppins(
+                            textStyle: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Image(
+                      image: AssetImage('assets/img/home.png'),
+                      width: 220,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 35, right: 35),
+                      width: double.infinity,
+                      height: 500,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          topRight: Radius.circular(50),
+                        ),
+                      ),
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Motivation Quotes For You',
+                              style: GoogleFonts.poppins(
+                                textStyle: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xff85B5ED),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              // Wrap ListView.builder with Expanded
+                              child: ListView.builder(
+                                itemCount: data != null ? data.length : 0,
+                                itemBuilder: (context, index) {
+                                  var itemData = data![index];
+                                  return Container(
+                                    margin: EdgeInsets.only(bottom: 10),
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xff85B5ED).withOpacity(0.5)
+                                    ),
+                                    child: ListTile(
+                                      title: Text(
+                                          "${itemData["guru_bk_id"]}"),
+                                          
+                                      subtitle: Text(itemData["quotes"]),
+                                      // Tambahkan ikon, aksi, atau elemen lain sesuai kebutuhan
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ],
-        ),
-      ),
+          );
+
+          // return Scaffold(
+          //   backgroundColor: const Color(0xffB3D5FF),
+          //   body: Column(
+          //     mainAxisAlignment: MainAxisAlignment.end,
+          //     children: [
+          //       Row(
+          //         mainAxisAlignment: MainAxisAlignment.center,
+          //         children: [
+          //
+          //
+          //           const SizedBox(
+          //             height: 10,
+          //           ),
+          //           const Image(
+          //             image: AssetImage('assets/img/home.png'),
+          //             width: 220,
+          //           ),
+          //           const SizedBox(
+          //             height: 10,
+          //           ),
+          //           Container(
+          //             padding:
+          //                 const EdgeInsets.only(top: 20, left: 35, right: 35),
+          //             width: double.infinity,
+          //             height: 500,
+          //             decoration: const BoxDecoration(
+          //               color: Colors.white,
+          //               borderRadius: BorderRadius.only(
+          //                 topLeft: Radius.circular(50),
+          //                 topRight: Radius.circular(50),
+          //               ),
+          //             ),
+          //             child: Column(
+          //               crossAxisAlignment: CrossAxisAlignment.start,
+          //               children: [
+          //                 Text(
+          //                   'Motivation Quotes For You',
+          //                   style: GoogleFonts.poppins(
+          //                     textStyle: const TextStyle(
+          //                       fontSize: 18,
+          //                       fontWeight: FontWeight.w700,
+          //                       color: Color(0xff85B5ED),
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ],
+          //             ),
+          //           ),
+          //           const SizedBox(
+          //             height: 10,
+          //           ),
+          //         ],
+          //       ),
+          //       Expanded(
+          //         child: ListView.builder(
+          //           itemCount: data != null ? data.length : 0,
+          //           itemBuilder: (context, index) {
+          //             var itemData = data![index];
+          //             return ListTile(
+          //               title: Text("Nama Guru: ${itemData["guru_bk_id"]}"),
+          //               subtitle: Text(itemData["quotes"]),
+          //               // Tambahkan ikon, aksi, atau elemen lain sesuai kebutuhan
+          //             );
+          //           },
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // );
+        }
+      },
     );
   }
 }

@@ -180,7 +180,7 @@ class _HistorypageState extends State<Historypage> {
                               padding: const EdgeInsets.only(
                                   top: 25, left: 20, right: 20),
                               margin: const EdgeInsets.only(
-                                  left: 20, right: 20, top: 15),
+                                  left: 20, right: 20, top: 15,),
                               width: 400,
                               height: 90,
                               decoration: BoxDecoration(
@@ -275,7 +275,7 @@ class _HistorypageState extends State<Historypage> {
                               ),
                             ),
                             Container(
-                              margin: const EdgeInsets.only(left: 40, bottom: 50),
+                              margin: const EdgeInsets.only(left: 40, bottom: 90),
                               width: 160,
                               height: 30,
                               padding: const EdgeInsets.only(top: 5),
