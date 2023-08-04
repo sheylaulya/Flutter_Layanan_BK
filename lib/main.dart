@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_layanan_bk/addSchedule.dart';
 import 'package:mobile_layanan_bk/components/bottomnavbar.dart';
 import 'package:mobile_layanan_bk/history.dart';
 import 'package:mobile_layanan_bk/home.dart';
@@ -7,6 +8,7 @@ import 'package:mobile_layanan_bk/onboardConseling.dart';
 import 'package:mobile_layanan_bk/onboardSocial.dart';
 import 'package:mobile_layanan_bk/onboardWelcome.dart';
 import 'package:mobile_layanan_bk/profile.dart';
+import 'package:mobile_layanan_bk/schedule.dart';
 import 'package:mobile_layanan_bk/splashscreen.dart';
 
 void main() {

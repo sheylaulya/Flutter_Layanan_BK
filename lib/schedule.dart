@@ -1,6 +1,7 @@
 import 'package:crea_radio_button/crea_radio_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:mobile_layanan_bk/addSchedule.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:http/http.dart' as http;
@@ -230,7 +231,10 @@ class _SchedulePageState extends State<SchedulePage> {
                 child: ElevatedButton(
                         onPressed: () {
                          
-                          print('Tombol + ditekan');
+                           Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AddSchedule()));
                         },
                         style: ElevatedButton.styleFrom(
                           shape: CircleBorder(),
